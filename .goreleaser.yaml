@@ -1,0 +1,23 @@
+project_name: gorels
+
+builds:
+  - id: gorels
+    main: .
+    binary: gorels
+    goos:
+      - windows
+    goarch:
+      - amd64
+    hooks:
+      pre: wails build -clean
+
+archives:
+  - format: zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_windows_amd64"
+    files:
+      - build/bin/gorels.exe
+
+release:
+  github:
+    owner: egorzhartun
+    name: gorels
