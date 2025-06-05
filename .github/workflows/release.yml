@@ -18,7 +18,7 @@ archives:
   - format: zip
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
     files:
-      - "build/bin/*" # путь к бинарникам, которые кладёт wails build
+      - "build/bin/gorels.exe" # путь к бинарникам, которые кладёт wails build
 
 release:
   github:
