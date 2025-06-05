@@ -1,0 +1,17 @@
+project_name: gorels
+builds:
+  - main: ./main.go
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+archives:
+  - format: zip
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+release:
+  github:
+    owner: egorzhartun
+    name: gorels
