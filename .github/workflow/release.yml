@@ -1,6 +1,9 @@
 project_name: gorels
+
 builds:
-  - main: ./main.go
+  - id: gorels
+    main: .
+    binary: gorels
     goos:
       - windows
       - linux
@@ -8,9 +11,15 @@ builds:
     goarch:
       - amd64
       - arm64
+    hooks:
+      pre: wails build -clean -platform {{ .Os }}/{{ .Arch }}
+
 archives:
   - format: zip
     name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}"
+    files:
+      - "build/bin/*" # путь к бинарникам, которые кладёт wails build
+
 release:
   github:
     owner: egorzhartun
